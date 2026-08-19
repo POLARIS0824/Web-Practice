@@ -11,6 +11,7 @@ import FluidBackground from './components/FluidBackground';
 import GradientText from './components/GlitchText';
 import CustomCursor from './components/CustomCursor';
 import ArtistCard from './components/ArtistCard';
+import TimeFrequency from './components/TimeFrequency';
 import { Artist } from './types';
 
 // Dummy Data
@@ -133,7 +134,7 @@ const App: React.FC = () => {
         
         {/* Desktop Menu */}
         <div className="hidden md:flex gap-10 text-sm font-bold tracking-widest uppercase">
-          {['Moments', 'Letters', 'Promises'].map((item) => (
+          {['Chronicles', 'Moments', 'Letters', 'Promises'].map((item) => (
             <button 
               key={item} 
               onClick={() => scrollToSection(item.toLowerCase())}
@@ -170,7 +171,7 @@ const App: React.FC = () => {
             exit={{ opacity: 0, y: -20 }}
             className="fixed inset-0 z-30 bg-[#31326f]/95 backdrop-blur-xl flex flex-col items-center justify-center gap-8 md:hidden"
           >
-            {['Moments', 'Letters', 'Promises'].map((item) => (
+            {['Chronicles', 'Moments', 'Letters', 'Promises'].map((item) => (
               <button
                 key={item}
                 onClick={() => scrollToSection(item.toLowerCase())}
@@ -265,6 +266,9 @@ const App: React.FC = () => {
           </motion.div>
         </div>
       </header>
+
+      {/* TIME FREQUENCY SECTION (COUNT-UP & COUNTDOWN) */}
+      <TimeFrequency />
 
       {/* MOMENTS SECTION */}
       <section id="moments" className="relative z-10 py-20 md:py-32">
