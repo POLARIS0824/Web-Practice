@@ -25,3 +25,12 @@ export enum Section {
   EXPERIENCE = 'experience',
   TICKETS = 'tickets',
 }
+
+export interface Song {
+  id: string;
+  title: string;
+  artist?: string;
+  src: string;
+  duration?: string;
+}
+

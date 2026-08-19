@@ -12,6 +12,7 @@ import GradientText from './components/GlitchText';
 import CustomCursor from './components/CustomCursor';
 import ArtistCard from './components/ArtistCard';
 import TimeFrequency from './components/TimeFrequency';
+import MusicPlayer from './components/MusicPlayer';
 import { Artist } from './types';
 
 // Dummy Data
@@ -145,21 +146,17 @@ const App: React.FC = () => {
             </button>
           ))}
         </div>
-        <button 
-          onClick={() => scrollToSection('promises')}
-          className="hidden md:inline-block border border-white px-8 py-3 text-xs font-bold tracking-widest uppercase hover:bg-white hover:text-black transition-all duration-300 text-white cursor-pointer bg-transparent"
-          data-hover="true"
-        >
-          Our Promises
-        </button>
-
-        {/* Mobile Menu Toggle */}
-        <button 
-          className="md:hidden text-white z-50 relative w-10 h-10 flex items-center justify-center"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-        >
-           {mobileMenuOpen ? <X /> : <Menu />}
-        </button>
+        {/* Right Actions: Music Player & Mobile Menu */}
+        <div className="flex items-center gap-3 z-50">
+          <MusicPlayer />
+          <button 
+            className="md:hidden text-white relative w-9 h-9 flex items-center justify-center bg-transparent border-none cursor-pointer"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle Menu"
+          >
+             {mobileMenuOpen ? <X /> : <Menu />}
+          </button>
+        </div>
       </nav>
 
       {/* Mobile Menu Overlay */}
@@ -180,12 +177,6 @@ const App: React.FC = () => {
                 {item}
               </button>
             ))}
-            <button 
-              onClick={() => scrollToSection('promises')}
-              className="mt-8 border border-white px-10 py-4 text-sm font-bold tracking-widest uppercase bg-white text-black"
-            >
-              Our Promises
-            </button>
             
             <div className="absolute bottom-10 flex gap-6">
                <a href="https://x.com/GoogleAIStudio" className="text-white/50 hover:text-white transition-colors">Twitter</a>
