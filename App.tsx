@@ -527,7 +527,7 @@ const App: React.FC = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setSelectedArtist(null)}
-            className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/50 backdrop-blur-md cursor-auto"
+            className="fixed inset-0 z-[60] flex items-center md:items-center justify-center p-4 bg-black/50 backdrop-blur-md cursor-auto overflow-y-auto"
           >
             <motion.div
               initial={{ scale: 0.9, y: 20 }}
@@ -536,30 +536,31 @@ const App: React.FC = () => {
               onClick={(e) => e.stopPropagation()}
               className="relative w-full max-w-5xl bg-[#1a1b3b] border border-white/10 overflow-hidden flex flex-col md:flex-row shadow-2xl shadow-[#4fb7b3]/10 group/modal"
             >
-              {/* Close Button */}
+              {/* Close Button — fixed on mobile, absolute on desktop */}
               <button
                 onClick={() => setSelectedArtist(null)}
-                className="absolute top-4 right-4 z-20 p-2 rounded-full bg-black/50 text-white hover:bg-white hover:text-black transition-colors"
+                className="fixed top-4 right-4 z-30 md:absolute md:top-4 md:right-4 p-2 rounded-full bg-black/50 text-white hover:bg-white hover:text-black transition-colors shadow-lg"
                 data-hover="true"
+                aria-label="Close"
               >
                 <X className="w-6 h-6" />
               </button>
 
-              {/* Navigation Buttons */}
+              {/* Navigation Buttons — fixed at viewport bottom on mobile, absolute on image side on desktop */}
               <button
                 onClick={(e) => { e.stopPropagation(); navigateArtist('prev'); }}
-                className="absolute left-4 bottom-4 translate-y-0 md:top-1/2 md:bottom-auto md:-translate-y-1/2 z-20 p-3 rounded-full bg-black/50 text-white hover:bg-white hover:text-black transition-colors border border-white/10 backdrop-blur-sm"
+                className="fixed left-4 bottom-6 z-30 md:absolute md:left-4 md:bottom-auto md:top-1/2 md:-translate-y-1/2 p-3 rounded-full bg-black/60 text-white hover:bg-white hover:text-black transition-colors border border-white/10 backdrop-blur-sm shadow-lg"
                 data-hover="true"
-                aria-label="Previous Artist"
+                aria-label="Previous"
               >
                 <ChevronLeft className="w-6 h-6" />
               </button>
 
               <button
                 onClick={(e) => { e.stopPropagation(); navigateArtist('next'); }}
-                className="absolute right-4 bottom-4 translate-y-0 md:top-1/2 md:bottom-auto md:-translate-y-1/2 z-20 p-3 rounded-full bg-black/50 text-white hover:bg-white hover:text-black transition-colors border border-white/10 backdrop-blur-sm md:right-8"
+                className="fixed right-4 bottom-6 z-30 md:absolute md:right-8 md:bottom-auto md:top-1/2 md:-translate-y-1/2 p-3 rounded-full bg-black/60 text-white hover:bg-white hover:text-black transition-colors border border-white/10 backdrop-blur-sm shadow-lg"
                 data-hover="true"
-                aria-label="Next Artist"
+                aria-label="Next"
               >
                 <ChevronRight className="w-6 h-6" />
               </button>
