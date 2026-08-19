@@ -133,7 +133,7 @@ const App: React.FC = () => {
         
         {/* Desktop Menu */}
         <div className="hidden md:flex gap-10 text-sm font-bold tracking-widest uppercase">
-          {['Memory', 'Confession', 'Gifts'].map((item) => (
+          {['Moments', 'Letters', 'Promises'].map((item) => (
             <button 
               key={item} 
               onClick={() => scrollToSection(item.toLowerCase())}
@@ -145,11 +145,11 @@ const App: React.FC = () => {
           ))}
         </div>
         <button 
-          onClick={() => scrollToSection('gifts')}
+          onClick={() => scrollToSection('promises')}
           className="hidden md:inline-block border border-white px-8 py-3 text-xs font-bold tracking-widest uppercase hover:bg-white hover:text-black transition-all duration-300 text-white cursor-pointer bg-transparent"
           data-hover="true"
         >
-          Get Gifts
+          Our Promises
         </button>
 
         {/* Mobile Menu Toggle */}
@@ -170,7 +170,7 @@ const App: React.FC = () => {
             exit={{ opacity: 0, y: -20 }}
             className="fixed inset-0 z-30 bg-[#31326f]/95 backdrop-blur-xl flex flex-col items-center justify-center gap-8 md:hidden"
           >
-            {['Memory', 'Confession', 'Gifts'].map((item) => (
+            {['Moments', 'Letters', 'Promises'].map((item) => (
               <button
                 key={item}
                 onClick={() => scrollToSection(item.toLowerCase())}
@@ -180,10 +180,10 @@ const App: React.FC = () => {
               </button>
             ))}
             <button 
-              onClick={() => scrollToSection('gifts')}
+              onClick={() => scrollToSection('promises')}
               className="mt-8 border border-white px-10 py-4 text-sm font-bold tracking-widest uppercase bg-white text-black"
             >
-              Get Gifts
+              Our Promises
             </button>
             
             <div className="absolute bottom-10 flex gap-6">
@@ -266,13 +266,13 @@ const App: React.FC = () => {
         </div>
       </header>
 
-      {/* MEMORY SECTION */}
-      <section id="memory" className="relative z-10 py-20 md:py-32">
+      {/* MOMENTS SECTION */}
+      <section id="moments" className="relative z-10 py-20 md:py-32">
         <div className="max-w-[1600px] mx-auto px-4 md:px-6">
           <div className="flex flex-col md:flex-row justify-between items-end mb-12 md:mb-16 px-4">
              <h2 className="text-5xl md:text-8xl font-heading font-bold uppercase leading-[0.9] drop-shadow-lg break-words w-full md:w-auto">
               OUR <br/> 
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#a8fbd3] to-[#4fb7b3]">Memory</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#a8fbd3] to-[#4fb7b3]">Moments</span>
             </h2>
           </div>
 
@@ -284,8 +284,8 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* CONFESSION SECTION */}
-      <section id="confession" className="relative z-10 py-20 md:py-32 bg-black/20 backdrop-blur-sm border-t border-white/10 overflow-hidden">
+      {/* LETTERS SECTION */}
+      <section id="letters" className="relative z-10 py-20 md:py-32 bg-black/20 backdrop-blur-sm border-t border-white/10 overflow-hidden">
         {/* Decorative blurred circle - Optimized */}
         <div className="absolute top-1/2 right-[-20%] w-[50vw] h-[50vw] bg-[#4fb7b3]/20 rounded-full blur-[40px] pointer-events-none will-change-transform" style={{ transform: 'translateZ(0)' }} />
 
@@ -345,8 +345,8 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* GIFTS SECTION */}
-      <section id="gifts" className="relative z-10 py-20 md:py-32 px-4 md:px-6 bg-black/30 backdrop-blur-lg">
+      {/* PROMISES SECTION */}
+      <section id="promises" className="relative z-10 py-20 md:py-32 px-4 md:px-6 bg-black/30 backdrop-blur-lg">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12 md:mb-20">
              <h2 className="text-5xl md:text-9xl font-heading font-bold opacity-20 text-white">
