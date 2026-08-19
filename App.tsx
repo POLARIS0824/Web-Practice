@@ -534,7 +534,7 @@ const App: React.FC = () => {
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.9, y: 20 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-5xl bg-[#1a1b3b] border border-white/10 overflow-hidden flex flex-col md:flex-row shadow-2xl shadow-[#4fb7b3]/10 group/modal"
+              className="relative w-full max-w-5xl bg-[#1a1b3b] border border-white/10 md:overflow-hidden flex flex-col md:flex-row shadow-2xl shadow-[#4fb7b3]/10 group/modal"
             >
               {/* Close Button — fixed on mobile, absolute on desktop */}
               <button
@@ -566,7 +566,7 @@ const App: React.FC = () => {
               </button>
 
               {/* Image Side */}
-              <div className="w-full md:w-1/2 min-h-[50vh] md:min-h-0 md:h-auto relative overflow-hidden">
+              <div className="w-full md:w-1/2 md:min-h-0 md:h-auto relative md:overflow-hidden">
                 <AnimatePresence mode="wait">
                   <motion.img 
                     key={selectedArtist.id}
@@ -576,14 +576,14 @@ const App: React.FC = () => {
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.4 }}
-                    className="w-full h-full object-contain md:object-cover"
+                    className="w-full block md:absolute md:inset-0 md:w-full md:h-full md:object-cover"
                   />
                 </AnimatePresence>
                 <div className="absolute inset-0 bg-gradient-to-t from-[#1a1b3b] via-transparent to-transparent md:bg-gradient-to-r" />
               </div>
 
               {/* Content Side */}
-              <div className="w-full md:w-1/2 p-8 pb-24 md:p-12 flex flex-col justify-center relative">
+              <div className="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center relative">
                 <motion.div
                   key={selectedArtist.id}
                   initial={{ opacity: 0, x: 20 }}
