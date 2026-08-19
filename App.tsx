@@ -345,10 +345,10 @@ const App: React.FC = () => {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12 md:mb-20">
              <h2 className="text-5xl md:text-9xl font-heading font-bold opacity-20 text-white">
-               ACCESS
+               PROMISES
              </h2>
              <p className="text-[#a8fbd3] font-mono uppercase tracking-widest -mt-3 md:-mt-8 relative z-10 text-sm md:text-base">
-               Secure your frequency
+               Bound to You, Forever
              </p>
           </div>
           
@@ -425,15 +425,15 @@ const App: React.FC = () => {
       <footer className="relative z-10 border-t border-white/10 py-12 md:py-16 bg-black/80 backdrop-blur-xl">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-start md:items-end gap-8">
           <div>
-             <div className="font-heading text-3xl md:text-4xl font-bold tracking-tighter mb-4 text-white">LUMINA</div>
+             <div className="font-heading text-3xl md:text-4xl font-bold tracking-tighter mb-4 text-white">XiaoYe</div>
              <div className="flex gap-2 text-xs font-mono text-gray-400">
-               <span>created by @chanelluuh</span>
+               <span>created by polaris</span>
              </div>
           </div>
           
           <div className="flex gap-6 md:gap-8 flex-wrap">
             <a href="https://x.com/GoogleAIStudio" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white font-bold uppercase text-xs tracking-widest transition-colors cursor-pointer" data-hover="true">
-              Twitter
+              To Be Continued
             </a>
           </div>
         </div>
