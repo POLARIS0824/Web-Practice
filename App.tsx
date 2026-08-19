@@ -18,51 +18,51 @@ import { Artist } from './types';
 const MEMORY: Artist[] = [
   { 
     id: '1', 
-    name: 'Neon Void', 
-    genre: 'Cyberpunk Synth', 
-    day: 'FRI 24', 
-    image: 'https://images.pexels.com/photos/1649691/pexels-photo-1649691.jpeg?_gl=1*i3xa2i*_ga*MjE0NTQyMDk5Mi4xNzYzMDYyMDM3*_ga_8JE65Q40S6*czE3NjMxNTk5MjAkbzYkZzEkdDE3NjMxNjE2MjkkajUxJGwwJGgw',
-    description: 'Architects of the audible abyss, weaving synth-heavy tapestries that explore the boundaries between digital and organic consciousness.'
+    name: 'Riverside Reverie', 
+    genre: 'First Frames', 
+    day: 'JUNE 13', 
+    image: 'https://image.polaris1111.me/2026/339e7841bc936b59d5e085a6079712d3.jpg',
+    description: '与你的第一次相见。那天的江边音乐节，仿佛时间静止，只有我们和音乐在流动。\n 一江斑驳影，尽向伊人倾。'
   },
   { 
     id: '2', 
-    name: 'Data Mosh', 
-    genre: 'Glitch Hop', 
-    day: 'FRI 24', 
-    image: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=1000&auto=format&fit=crop',
-    description: 'Deconstructing the beat to rebuild it in high-definition chaos. Expect glitch textures, broken rhythms, and pure audio entropy.'
+    name: 'Golden Hour', 
+    genre: 'Sunset Glow', 
+    day: 'JUNE 14', 
+    image: 'https://image.polaris1111.me/2026/ef8589042923fd3c4ae3a8dd6743ecbf.jpg',
+    description: '第一次去武昌湾，日落还行，但夜色很美——不过最美的事物另有其人～'
   },
   { 
     id: '3', 
-    name: 'Ether Real', 
-    genre: 'Ethereal Techno', 
-    day: 'SAT 25', 
-    image: 'https://images.unsplash.com/photo-1493225255756-d9584f8606e9?q=80&w=1000&auto=format&fit=crop',
-    description: 'Techno from a dimension of pure light. Hypnotic loops and ethereal vocals that float above a foundation of industrial bass.'
+    name: 'Yujia Mountain', 
+    genre: '27 Seconds', 
+    day: 'JUNE 17', 
+    image: 'https://image.polaris1111.me/2026/16a3393777b6c411e214ac63c6956cda.jpg',
+    description: '从梧桐语的会饮咖啡厅到图书馆，从马鞍山公园到喻家山，从华科到地大......与你在一起的每个地方，每个时刻，都似乎充满了惊喜与幸运'
   },
   { 
     id: '4', 
-    name: 'Hyper Loop', 
-    genre: 'Drum & Bass', 
-    day: 'SAT 25', 
-    image: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=1000&auto=format&fit=crop',
-    description: 'High-velocity drum & bass that accelerates the heartbeat to match the tempo of the city\'s neon pulse.'
+    name: 'The Question', 
+    genre: 'Riverbank Vow', 
+    day: 'JUNE 20', 
+    image: 'https://image.polaris1111.me/2026/034daef92a6eb13d1927b2f4db4be498.jpg',
+    description: '无比幸福的一天。\n 下午去财大自习，晚饭吃抓饭，晚上去江边散步，又是暴走两万步。\n 牵起了你的手，那种感觉真的好美妙。'
   },
   { 
     id: '5', 
-    name: 'Digital Soul', 
-    genre: 'Deep House', 
-    day: 'SUN 26', 
-    image: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=1000&auto=format&fit=crop',
-    description: 'Deep, resonant house music that finds the ghost in the machine, blending soulful samples with futuristic sound design.'
+    name: 'Your Hand', 
+    genre: 'Warm Grip', 
+    day: 'JUNE 20', 
+    image: 'https://image.polaris1111.me/2026/c8c5a13593635f44adb6864484de6605.jpg',
+    description: '“你是我一直寻找的另一半吗” \n “我想...是的” \n “你就是！”'
   },
   { 
     id: '6', 
-    name: 'Void Walker', 
-    genre: 'Dark Ambient', 
-    day: 'SUN 26', 
-    image: 'https://images.unsplash.com/photo-1501386761578-eac5c94b800a?q=80&w=1000&auto=format&fit=crop',
-    description: 'Ambient soundscapes for the end of the world. A contemplative journey through dark matter and silence.'
+    name: 'Study Date', 
+    genre: 'Old Classroom', 
+    day: 'JUNE 23', 
+    image: 'https://image.polaris1111.me/2026/24a5267b3f2788d9921d09a920a6dd77.jpg',
+    description: '在财大自习了大概一天。去吃了高记陋室汤包，味道还真不错。\n 晚上在操场上散步，站在看台上说了什么话，你说日后想起来一定很害羞——可惜我现在忘了，但那份悸动我永远记得。'
   },
 ];
 
@@ -329,7 +329,7 @@ const App: React.FC = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-[#637ab9] to-[#4fb7b3] rounded-3xl rotate-3 opacity-30 blur-xl" />
               <div className="relative h-full w-full rounded-3xl overflow-hidden border border-white/10 group shadow-2xl">
                 <img 
-                  src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1000&auto=format&fit=crop" 
+                  src="https://image.polaris1111.me/2026/2725e781b85764cddf09055a7fcb4669.jpg" 
                   alt="Crowd" 
                   className="h-full w-full object-cover transition-transform duration-[1.5s] group-hover:scale-110 will-change-transform" 
                 />
@@ -533,9 +533,11 @@ const App: React.FC = () => {
                   
                   <div className="h-px w-20 bg-white/20 mb-6" />
                   
-                  <p className="text-gray-300 leading-relaxed text-lg font-light mb-8">
-                    {selectedArtist.description}
-                  </p>
+                  <div className="text-gray-300 leading-relaxed text-lg font-light mb-8 space-y-4">
+                    {selectedArtist.description.split('\n').map((paragraph, i) => (
+                      <p key={i}>{paragraph}</p>
+                    ))}
+                  </div>
                 </motion.div>
               </div>
             </motion.div>
