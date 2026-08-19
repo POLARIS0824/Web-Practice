@@ -6,7 +6,7 @@
 
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
-import { Ticket, MapPin, Menu, X, Calendar, Play, ChevronLeft, ChevronRight, Heart, Globe, Zap } from 'lucide-react';
+import { Ticket, MapPin, Menu, X, Calendar, Play, ChevronLeft, ChevronRight, Heart, Globe, Zap, Sparkles, Gift, Infinity as InfinityIcon, Stamp } from 'lucide-react';
 import FluidBackground from './components/FluidBackground';
 import GradientText from './components/GlitchText';
 import CustomCursor from './components/CustomCursor';
@@ -75,7 +75,27 @@ const App: React.FC = () => {
   const [selectedArtist, setSelectedArtist] = useState<Artist | null>(null);
   
   const [purchasingIndex, setPurchasingIndex] = useState<number | null>(null);
-  const [purchasedIndex, setPurchasedIndex] = useState<number | null>(null);
+  const [purchasedSet, setPurchasedSet] = useState<Set<number>>(new Set());
+  const [showToast, setShowToast] = useState(false);
+  const toastTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const handleToBeContinued = () => {
+    if (toastTimerRef.current) {
+      clearTimeout(toastTimerRef.current);
+    }
+    setShowToast(true);
+    toastTimerRef.current = setTimeout(() => {
+      setShowToast(false);
+    }, 3000);
+  };
+
+  useEffect(() => {
+    return () => {
+      if (toastTimerRef.current) {
+        clearTimeout(toastTimerRef.current);
+      }
+    };
+  }, []);
 
   // Handle keyboard navigation for artist modal
   useEffect(() => {
@@ -93,8 +113,8 @@ const App: React.FC = () => {
     setPurchasingIndex(index);
     setTimeout(() => {
       setPurchasingIndex(null);
-      setPurchasedIndex(index);
-    }, 3500);
+      setPurchasedSet(prev => new Set(prev).add(index));
+    }, 1500);
   };
 
   const scrollToSection = (id: string) => {
@@ -348,45 +368,89 @@ const App: React.FC = () => {
                PROMISES
              </h2>
              <p className="text-[#a8fbd3] font-mono uppercase tracking-widest -mt-3 md:-mt-8 relative z-10 text-sm md:text-base">
-               Bound to You, Forever
+               承诺小铺 · 只收爱心
              </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              { name: 'Day Pass', price: '$149', color: 'white', accent: 'bg-white/5' },
-              { name: 'Weekend', price: '$349', color: 'teal', accent: 'bg-[#4fb7b3]/10 border-[#4fb7b3]/50' },
-              { name: 'Astral VIP', price: '$899', color: 'periwinkle', accent: 'bg-[#637ab9]/10 border-[#637ab9]/50' },
+              { 
+                name: '亲吻卡', 
+                price: '💗×1', 
+                color: 'white', 
+                accent: 'bg-white/5',
+                icon: Heart,
+                benefits: [
+                  { icon: Heart, text: '凭此卡可兑换一个亲亲' },
+                  { icon: MapPin, text: '不限时间，不限地点' },
+                  { icon: Zap, text: '可叠加使用，上不封顶' },
+                ],
+                footer: '本卡最终解释权归你所有'
+              },
+              { 
+                name: '奇妙礼物', 
+                price: '💗×99', 
+                color: 'teal', 
+                accent: 'bg-[#4fb7b3]/10 border-[#4fb7b3]/50',
+                icon: Gift,
+                benefits: [
+                  { icon: Gift, text: '一份开学时的神秘礼物' },
+                  { icon: MapPin, text: '线索：与我们的 Evil TODO 清单有关 (bushi)' },
+                  { icon: Zap, text: '附赠拆礼物时的拥抱一枚' },
+                ],
+                footer: '礼物会迟到，但心意不会'
+              },
+              { 
+                name: '一辈子通行证', 
+                price: '💗×∞', 
+                color: 'periwinkle', 
+                accent: 'bg-[#637ab9]/10 border-[#637ab9]/50',
+                icon: InfinityIcon,
+                benefits: [
+                  { icon: InfinityIcon, text: 'TODO 清单，我们一起——慢慢打卡' },
+                  { icon: MapPin, text: '所有周末、假期、季节的优先占用权' },
+                  { icon: Globe, text: '不可转让、不可退换、永久有效' },
+                ],
+                footer: '分期付款，期限是一辈子'
+              },
             ].map((ticket, i) => {
               const isPurchasing = purchasingIndex === i;
-              const isPurchased = purchasedIndex === i;
-              const isDisabled = (purchasingIndex !== null) || (purchasedIndex !== null);
+              const isPurchased = purchasedSet.has(i);
+              const isDisabled = purchasingIndex !== null;
+              const TicketIcon = ticket.icon;
 
               return (
                 <motion.div
                   key={i}
-                  whileHover={isDisabled ? {} : { y: -20 }}
+                  whileHover={isDisabled || isPurchased ? {} : { y: -20 }}
                   className={`relative p-8 md:p-10 border border-white/10 backdrop-blur-md flex flex-col min-h-[450px] md:min-h-[550px] transition-colors duration-300 ${ticket.accent} ${isDisabled && !isPurchased ? 'opacity-50 grayscale' : ''} will-change-transform`}
-                  data-hover={!isDisabled}
+                  data-hover={!isDisabled && !isPurchased}
                 >
                   <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
                   
                   <div className="flex-1">
-                    <h3 className="text-2xl md:text-3xl font-heading font-bold mb-4 text-white">{ticket.name}</h3>
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className={`p-2 rounded-xl ${isPurchased ? 'bg-[#a8fbd3]/20' : 'bg-white/10'}`}>
+                        <TicketIcon className={`w-5 h-5 ${isPurchased ? 'text-[#a8fbd3]' : ticket.color === 'white' ? 'text-white' : ticket.color === 'teal' ? 'text-[#4fb7b3]' : 'text-[#637ab9]'}`} />
+                      </div>
+                      <h3 className="text-2xl md:text-3xl font-heading font-bold text-white">{ticket.name}</h3>
+                    </div>
                     <div className={`text-5xl md:text-6xl font-bold mb-8 md:mb-10 tracking-tighter ${ticket.color === 'white' ? 'text-white' : ticket.color === 'teal' ? 'text-[#4fb7b3]' : 'text-[#637ab9]'}`}>
                       {ticket.price}
                     </div>
                     <ul className="space-y-4 md:space-y-6 text-sm text-gray-200">
-                      <li className="flex items-center gap-3"><Ticket className="w-5 h-5 text-gray-400" /> General Entry</li>
-                      <li className="flex items-center gap-3"><MapPin className="w-5 h-5 text-gray-400" /> All Stages</li>
-                      {i > 0 && <li className="flex items-center gap-3 text-white"><Zap className={`w-5 h-5 text-[#a8fbd3]`} /> Expedited Entry</li>}
-                      {i > 1 && <li className="flex items-center gap-3 text-white"><Globe className={`w-5 h-5 text-[#4fb7b3]`} /> Backstage Lounge</li>}
+                      {ticket.benefits.map((benefit, j) => (
+                        <li key={j} className="flex items-center gap-3">
+                          <benefit.icon className={`w-5 h-5 ${j === 0 ? 'text-gray-400' : j === 1 ? 'text-gray-400' : ticket.color === 'teal' ? 'text-[#a8fbd3]' : 'text-[#4fb7b3]'}`} />
+                          <span className={j > 0 ? 'text-white' : ''}>{benefit.text}</span>
+                        </li>
+                      ))}
                     </ul>
                   </div>
                   
                   <button 
                     onClick={() => handlePurchase(i)}
-                    disabled={isDisabled}
+                    disabled={isDisabled || isPurchased}
                     className={`w-full py-4 text-sm font-bold uppercase tracking-[0.2em] border border-white/20 transition-all duration-300 mt-8 group overflow-hidden relative 
                       ${isPurchased 
                         ? 'bg-[#a8fbd3] text-black border-[#a8fbd3] cursor-default' 
@@ -397,8 +461,20 @@ const App: React.FC = () => {
                             : 'text-white cursor-pointer hover:bg-white hover:text-black'
                       }`}
                   >
-                    <span className="relative z-10">
-                      {isPurchasing ? 'Purchasing...' : isPurchased ? 'Purchased' : 'Purchase'}
+                    <span className="relative z-10 flex items-center justify-center gap-2">
+                      {isPurchasing ? (
+                        <>
+                          <Heart className="w-4 h-4 animate-pulse" />
+                          支付中...
+                        </>
+                      ) : isPurchased ? (
+                        <>
+                          <Stamp className="w-4 h-4" />
+                          已生效
+                        </>
+                      ) : (
+                        '💗 支付'
+                      )}
                     </span>
                     {/* Only show hover effect if actionable */}
                     {!isDisabled && !isPurchased && !isPurchasing && (
@@ -412,7 +488,7 @@ const App: React.FC = () => {
                       animate={{ opacity: 1, y: 0 }}
                       className="text-xs text-center mt-3 text-white/40 font-mono"
                     >
-                      Demo site: no purchase was made
+                      {ticket.footer}
                     </motion.p>
                   )}
                 </motion.div>
@@ -432,9 +508,13 @@ const App: React.FC = () => {
           </div>
           
           <div className="flex gap-6 md:gap-8 flex-wrap">
-            <a href="https://x.com/GoogleAIStudio" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white font-bold uppercase text-xs tracking-widest transition-colors cursor-pointer" data-hover="true">
+            <button 
+              onClick={handleToBeContinued}
+              className="text-gray-400 hover:text-white font-bold uppercase text-xs tracking-widest transition-colors cursor-pointer bg-transparent border-none p-0"
+              data-hover="true"
+            >
               To Be Continued
-            </a>
+            </button>
           </div>
         </div>
       </footer>
@@ -532,6 +612,26 @@ const App: React.FC = () => {
                 </motion.div>
               </div>
             </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Surprise Toast Notification */}
+      <AnimatePresence>
+        {showToast && (
+          <motion.div
+            initial={{ opacity: 0, y: 30, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 20, scale: 0.9 }}
+            transition={{ type: "spring", stiffness: 400, damping: 25 }}
+            className="fixed bottom-10 left-1/2 -translate-x-1/2 z-[100] px-6 py-3.5 rounded-full bg-[#1a1b3b]/95 border border-[#4fb7b3]/40 backdrop-blur-xl shadow-[0_0_30px_rgba(79,183,179,0.3)] flex items-center gap-3 text-white pointer-events-auto cursor-pointer"
+            onClick={() => setShowToast(false)}
+            data-hover="true"
+          >
+            <Sparkles className="w-5 h-5 text-[#a8fbd3] shrink-0 animate-pulse" />
+            <span className="font-medium text-sm md:text-base tracking-wider text-white">
+              后续还有更多惊喜
+            </span>
           </motion.div>
         )}
       </AnimatePresence>
