@@ -566,7 +566,7 @@ const App: React.FC = () => {
               </button>
 
               {/* Image Side */}
-              <div className="w-full md:w-1/2 h-64 md:h-auto relative overflow-hidden">
+              <div className="w-full md:w-1/2 min-h-[50vh] md:min-h-0 md:h-auto relative overflow-hidden">
                 <AnimatePresence mode="wait">
                   <motion.img 
                     key={selectedArtist.id}
@@ -576,7 +576,7 @@ const App: React.FC = () => {
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.4 }}
-                    className="absolute inset-0 w-full h-full object-cover"
+                    className="w-full h-full object-contain md:object-cover"
                   />
                 </AnimatePresence>
                 <div className="absolute inset-0 bg-gradient-to-t from-[#1a1b3b] via-transparent to-transparent md:bg-gradient-to-r" />
