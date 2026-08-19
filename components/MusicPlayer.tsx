@@ -87,7 +87,7 @@ const MarqueeText: React.FC<{
         <motion.div
           key={text}
           className={`inline-flex whitespace-nowrap will-change-transform ${className}`}
-          animate={isPlaying ? { x: ['0%', '-50%'] } : { x: '0%' }}
+          animate={{ x: ['0%', '-50%'] }}
           transition={{
             repeat: Infinity,
             duration: scrollDuration,
