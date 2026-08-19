@@ -6,7 +6,7 @@
 
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
-import { Ticket, Globe, Zap, Music, MapPin, Menu, X, Calendar, Play, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Ticket, MapPin, Menu, X, Calendar, Play, ChevronLeft, ChevronRight, Heart, Globe, Zap } from 'lucide-react';
 import FluidBackground from './components/FluidBackground';
 import GradientText from './components/GlitchText';
 import CustomCursor from './components/CustomCursor';
@@ -291,14 +291,14 @@ const App: React.FC = () => {
                 Beyond <br/> <GradientText text="DISTANCE" className="text-5xl md:text-7xl" />
               </h2>
               <p className="text-lg md:text-xl text-gray-200 mb-8 md:mb-12 font-light leading-relaxed drop-shadow-md">
-                Lumina isn't just a festival; it's a sensory expedition. We fuse cutting-edge audio technology with generative art to create a living, breathing ecosystem of sound.
+                有时觉得，计算机的计数法还挺贴切——比如今天，或许该算作我们一起度过的第 0 个七夕。相隔千里，只能借这方小站，寄去满腹情思。献给你——我的百分百女孩。
               </p>
               
               <div className="space-y-6 md:space-y-8">
                 {[
-                  { icon: Globe, title: 'Starlight District', desc: 'Walk among 50ft tall light constructs.' },
-                  { icon: Zap, title: 'Neuro-Link Audio', desc: 'Haptic floors that sync with your heartbeat.' },
-                  { icon: Music, title: 'Infinite Stage', desc: 'AI-driven visuals that react to the crowd.' },
+                  { icon: Heart, title: 'First Encounter', desc: '一江斑驳影，尽向伊人倾' },
+                  { icon: Heart, title: 'Bound By Fate', desc: '你的过去，竟然与我有关；我的未来，都愿与你相连。' },
+                  { icon: Heart, title: 'Whispers of Love', desc: '你愿意为了我而改变……这真的比世界上任何情话还要动听。' },
                 ].map((feature, i) => (
                   <div
                     key={i} 

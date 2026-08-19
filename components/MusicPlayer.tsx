@@ -404,13 +404,20 @@ export const MusicPlayer: React.FC = () => {
               animate={
                 isPlaying
                   ? { height: ['20%', '100%', '30%', '80%', '20%'] }
-                  : { height: '30%' }
+                  : { height: '25%' }
               }
-              transition={{
-                repeat: Infinity,
-                duration: 0.7 + i * 0.2,
-                ease: 'easeInOut',
-              }}
+              transition={
+                isPlaying
+                  ? {
+                      repeat: Infinity,
+                      duration: 0.7 + i * 0.2,
+                      ease: 'easeInOut',
+                    }
+                  : {
+                      duration: 0.3,
+                      ease: 'easeOut',
+                    }
+              }
             />
           ))}
         </div>
